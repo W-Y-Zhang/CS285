@@ -2,10 +2,9 @@
 
 ## Evaluation rollout
 
-<video src="wandb/run-20260918_152840-hnmxjh75/files/media/videos/eval/rollout_ep4_70000_f68a515ef902b77f9e75.mp4" controls muted loop></video>
+[![Evaluation rollout at 70,000 steps](assets/rollout_ep4_70000.gif)](wandb/run-20260918_152840-hnmxjh75/files/media/videos/eval/rollout_ep4_70000_f68a515ef902b77f9e75.mp4)
 
-Final evaluation rollout after 70,000 training steps.
-[Open the video](wandb/run-20260918_152840-hnmxjh75/files/media/videos/eval/rollout_ep4_70000_f68a515ef902b77f9e75.mp4)
+Final evaluation rollout after 70,000 training steps. Click the preview for the MP4.
 
 ## Setup
 
