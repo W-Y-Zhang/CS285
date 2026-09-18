@@ -116,17 +116,16 @@ class FlowMatchingPolicy(BasePolicy):
 
         batch_size = state.shape[0]
 
-        x0 = torch.randn(batch_size, self.chunk_size, self.action_dim)
+        x0 = torch.randn_like(action_chunk)
         x1 = action_chunk
-        t = torch.rand(batch_size)
-        t = t.unsqueeze(1).unsqueeze(1)
+        t = torch.rand(batch_size, 1, 1, device=state.device, dtype=state.dtype)
         xt = (1-t)*x0 + t*x1
         xt = xt.reshape(-1, self.chunk_size*self.action_dim)
         t = t.squeeze(-1)
         u = x1-x0
         velocity_field = torch.cat([state,xt,t],dim=1)
         v_pre = self.net(velocity_field)
-        loss = F.mse_loss(v_pre,u)
+        loss = F.mse_loss(v_pre, u.flatten(start_dim=1))
 
         return loss
 
@@ -139,18 +138,22 @@ class FlowMatchingPolicy(BasePolicy):
 
         batch_size = state.shape[0]
         step_length = 1/num_steps
-        x0 = torch.randn(batch_size,self.chunk_size,self.action_dim)
-        xk = x0
+        xk = torch.randn(
+            batch_size, self.chunk_size, self.action_dim,
+            device=state.device, dtype=state.dtype,
+        )
         for k in range(num_steps):
             tk = k*step_length
-            tk_tensor = torch.full((batch_size, 1), tk)
+            tk_tensor = torch.full(
+                (batch_size, 1), tk, device=state.device, dtype=state.dtype
+            )
             xk_flat = xk.reshape(-1, self.chunk_size*self.action_dim)
             velocity_field = torch.cat([state,xk_flat,tk_tensor],dim = 1)
             v_pre = self.net(velocity_field)
             v_pre = v_pre.reshape(-1,self.chunk_size,self.action_dim)
             xk_1 = xk + step_length*v_pre
             xk = xk_1
-        return xk_1
+        return xk
 
 PolicyType: TypeAlias = Literal["mse", "flow"]
 
