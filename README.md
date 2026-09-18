@@ -1,10 +1,12 @@
 # Homework 1: Imitation Learning
 
-## Evaluation rollout
+## Evaluation rollouts at 70,000 steps
 
-[![Evaluation rollout at 70,000 steps](assets/rollout_ep4_70000.gif)](wandb/run-20260918_152840-hnmxjh75/files/media/videos/eval/rollout_ep4_70000_f68a515ef902b77f9e75.mp4)
+| MSE policy | Flow Matching policy |
+| --- | --- |
+| [![MSE rollout](assets/rollout_ep4_70000.gif)](wandb/run-20260918_152840-hnmxjh75/files/media/videos/eval/rollout_ep4_70000_f68a515ef902b77f9e75.mp4) | [![Flow Matching rollout](assets/rollout_ep4_70000_flow.gif)](wandb/run-20260918_162239-6t0iq462/files/media/videos/eval/rollout_ep4_70000_371f2ed7e2fb52338100.mp4) |
 
-Final evaluation rollout after 70,000 training steps.
+Click either preview to open its MP4. MSE reward: 0.617; Flow Matching reward: 0.813.
 
 ## Setup
 
