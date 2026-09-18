@@ -1,5 +1,12 @@
 # Homework 1: Imitation Learning
 
+## Evaluation rollout
+
+<video src="wandb/run-20260918_152840-hnmxjh75/files/media/videos/eval/rollout_ep4_70000_f68a515ef902b77f9e75.mp4" controls muted loop></video>
+
+Final evaluation rollout after 70,000 training steps.
+[Open the video](wandb/run-20260918_152840-hnmxjh75/files/media/videos/eval/rollout_ep4_70000_f68a515ef902b77f9e75.mp4)
+
 ## Setup
 
 This project uses `uv` for package management. `uv` is a Python package and environment manager from [Astral](https://astral.sh). It replaces tools like
